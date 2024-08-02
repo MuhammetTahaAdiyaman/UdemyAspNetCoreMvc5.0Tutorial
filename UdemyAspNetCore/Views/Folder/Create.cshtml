@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Create" asp-controller="Folder" method="post">
+    <div class="form-group">
+        <label>Klasör İsmi:</label>
+        <input type="text" name="folderName" class="form-control"/>
+    </div>
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary mt-2">Save</button>
+    </div>
+</form>

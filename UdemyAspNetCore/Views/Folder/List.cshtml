@@ -1,0 +1,38 @@
+﻿@model DirectoryInfo[]
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-4">
+        <!--partial eklemek için
+        <partial name="_NewsPartialView" model="NewsContext.NewsList"/>
+        -->
+        
+        @await Component.InvokeAsync("News", new{@color="blue"})
+    </div>
+    <div class="col-8">
+        <a asp-action="Create" asp-controller="Folder">Create</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Ad</th>
+                    <th>Oluşturma Tarihi</th>
+                    <th>Path</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.CreationTime</td>
+                        <td>@item.FullName</td>
+                        <td><a asp-action="Remove" asp-controller="Folder" asp-route-folderName="@item.Name">Remove</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

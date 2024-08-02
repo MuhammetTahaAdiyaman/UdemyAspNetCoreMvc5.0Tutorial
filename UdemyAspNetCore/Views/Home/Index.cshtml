@@ -1,0 +1,85 @@
+﻿@model List<Customer>
+@{
+    // int age = 26;
+    // string value = string.Empty;
+    // if(age > 18)
+    // {
+    //     value = "Yaş 18'den büyük";
+    // }
+    // else
+    // {
+    //     value = "Yaş 18'den küçük";
+    // }
+
+    // int calculate(int number1,int number2)
+    // {
+    //     return number1 + number2;
+    // }
+
+    // var value = calculate(1, 2);
+
+    // List<string> names = new() { "Taha", "Yasemen", "Gizem", "Zahide" };
+}
+
+@* @foreach(var item in names)
+{
+    <p>
+        @(item == "Taha"?"Taha Eğitmen":item)
+    </p>
+} *@
+
+
+@* <p>ViewBag.Data = @ViewBag.Name</p>
+<p>ViewData["Name"] =@ViewData["Name"] </p>
+<p>TempData["Name"] = @TempData["Name"]</p>
+<p>
+    First Name: @Model.FirstName
+    <br />
+    Last Name: @Model.LastName
+    <br />
+    Age: @Model.Age
+</p> *@
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-4">
+        <!--partial view eklemek için
+        <partial name="_NewsPartialView" model="NewsContext.NewsList" />
+        -->
+        <paragraph short-description="Haberler"></paragraph>
+        @await Component.InvokeAsync("News",new{color="red"})
+    </div>
+    <div class="col-8">
+        <h3>Customer List</h3>
+        <a asp-action="Create" asp-controller="Home">Ekle</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.FirstName</td>
+                        <td>@item.LastName</td>
+                        <td>@item.Age</td>
+                        <td>
+                            <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id">Update</a>
+                            <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id">Remove</a>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table> 
+    </div>
+</div>
+        

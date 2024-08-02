@@ -1,0 +1,34 @@
+﻿@model Customer
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+        <div class="container">
+            <h3>Create Customer</h3>
+            <form asp-action="Create" asp-controller="Home" method="post">
+                <div class="form-group">
+                    <label>First Name: <span class="text-danger">*</span>
+                                       <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+                    </label>
+                    <input asp-for="@Model.FirstName" class="form-control"/>
+                </div>
+            <div class="form-group">
+            <label>
+                Last Name: <span class="text-danger">*</span>
+                           <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+
+                </label>
+                <input asp-for="@Model.LastName" class="form-control" />
+            </div>
+            <div class="form-group">
+            <label>
+                Age: <span class="text-danger">*</span>
+                     <span asp-validation-for="@Model.Age" class="text-danger"></span>
+
+                </label>
+                <input asp-for="@Model.Age" class="form-control" />
+            </div>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+   
